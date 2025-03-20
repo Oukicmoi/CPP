@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 21:22:20 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/01/31 21:39:46 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/03/20 23:49:37 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,28 @@ class PhoneBook
 {
     private:
         Contact contacts[8];
-        int contactCount;
-        int oldestContactIndex;
+        int cpt;
 
     public:
         PhoneBook();
         ~PhoneBook();
-
-        void addContact(const Contact &contact);
-        void displayContacts() const;
-        void displayContactDetails(int index) const;
+        
+        void cmdadd(PhoneBook &book);
+        void addContact(Contact &contact);
+        void    printacontact(Contact &contact);
+        void    printallcontacts(PhoneBook &book);
+        void    replacecontact(Contact &oldc, Contact &newc);
+        void    printfullc(Contact &contact);
+        void    booksearch(PhoneBook &book);
+        int getCpt() const;
+        void setCpt(int i);
+        Contact* getContacts();
 };
+
+int ft_atoi(const std::string& str);
+void    printallcat();
+void    printacat(std::string   str);
+std::string     notempty(std::string str);
+
 
 #endif

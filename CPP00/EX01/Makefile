@@ -6,7 +6,7 @@
 #    By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/11 16:45:54 by gtraiman          #+#    #+#              #
-#    Updated: 2025/01/31 23:17:41 by gtraiman         ###   ########.fr        #
+#    Updated: 2025/02/22 12:50:23 by gtraiman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,7 @@ CXX         = c++
 
 CXXFLAGS    = -std=c++98 -Wall -Wextra -Werror -g3
 
-SRCS        = main.cpp \
-				phonebook.cpp \
+SRCS        = 	phonebook.cpp \
 				contact.cpp \
 
 OBJS        = $(SRCS:.cpp=.o)
