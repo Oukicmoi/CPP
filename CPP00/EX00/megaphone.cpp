@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:54:19 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/01/30 20:11:15 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/03/21 18:15:10 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	main(int ac, char **av)
 			char c = av[i][j];
 			c = static_cast<char>(std::toupper(static_cast<unsigned char>(c)));
 			std::cout << c;
-			std::cout.flush();
 			j++;
 		}
 		i++;

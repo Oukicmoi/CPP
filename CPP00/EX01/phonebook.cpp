@@ -6,14 +6,13 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 23:14:19 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/03/20 23:57:17 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/03/21 18:26:12 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <iomanip>
-#include <sstream>
+
 #include "phonebook.hpp"
+ 
 
 PhoneBook::PhoneBook() : cpt(0) {};
 
@@ -42,9 +41,18 @@ std::string    notempty(std::string str)
     while(input == "")
     {
         std::cout << str ;
-        std::getline(std::cin, input);
+        if(!std::getline(std::cin, input))
+            std::exit(0);
     }
     return (input);
+}
+
+
+
+void handleSigint(int signal) 
+{
+    if (signal == SIGINT)
+        std::exit(0);
 }
 
 void PhoneBook::addContact(Contact &contact)
@@ -149,13 +157,15 @@ void    PhoneBook::booksearch(PhoneBook &book)
         std::cout << "THERE IS NO CONTACT" << std::endl;
         return ;
     }
+    book.printallcontacts(book);
     while( i < 8 && book.getContacts()[i].getFirstName() != "")
         i++;
     while(input == "")
     {
         std::cout << "\nTYPE THE INDEX OF THE CONTACT YOU ARE LOOKING FOR" << std::endl;
-        getline(std::cin, input);
-        if(ft_atoi(input) <= i + 1 && ft_atoi(input) >= 1)
+        if(!getline(std::cin, input))
+            std::exit(0);
+        if(ft_atoi(input) <= i && ft_atoi(input) >= 1)
         {
             book.printfullc(book.getContacts()[ft_atoi(input) - 1]);
             return ;
@@ -172,9 +182,8 @@ int ft_atoi(const std::string& str)
     std::istringstream iss(str);
     iss >> num;
 
-    if (iss.fail()) {
-        throw std::invalid_argument("Mauvais index");
-    }
+    if (iss.fail())
+        return(-1);
     return num;
 }
 
@@ -183,18 +192,17 @@ int main()
     PhoneBook book;
     std::string input = "";
     
+    std::signal(SIGINT, handleSigint);
     while(true)
     {
         std::cout << "TYPE ADD, SEARCH OR EXIT\n" << std::endl;
         while(input == "")
-            getline(std::cin, input);
+            if(!getline(std::cin, input))
+                std::exit(0);            
         if(input == "ADD")
             book.cmdadd(book);
         if(input == "SEARCH")
-        {
-            book.printallcontacts(book);
             book.booksearch(book);
-        }
         if(input == "EXIT")
             return(0);
         input = "";

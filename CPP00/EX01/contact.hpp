@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 21:39:37 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/03/20 23:00:27 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/03/21 18:06:58 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 #define CONTACT_HPP
 
 #include <string>
+#include <limits>
+#include <csignal>
+#include <iostream>
+#include <iomanip>
+#include <sstream>
+#include <cstdlib>
 
 class Contact {
 private:
