@@ -6,12 +6,12 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 19:40:04 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/03/21 20:29:42 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/03/23 16:42:26 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Zomnie_HPP
-#define Zomnie_HPP
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
 
 #include <string>
 #include <limits>
@@ -32,9 +32,9 @@ class Zombie
         void    announce(void);
         void setname( std::string name );
         
-};
-
-void randomChump( std::string name );
+    };
+    
+Zombie* zombieHorde( int N, std::string name );
 Zombie* newZombie( std::string name );
 
 

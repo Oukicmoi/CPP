@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 23:09:38 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/03/21 23:43:42 by gtraiman         ###   ########.fr       */
+/*   Created: 2025/03/21 22:34:03 by gtraiman          #+#    #+#             */
+/*   Updated: 2025/03/22 01:05:35 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
+#ifndef WEAPON_HPP
+#define WEAPON_HPP
 
-HumanB::HumanB(std::string name) : name(name), weapon(NULL) {};
-HumanB::~HumanB() {};
+#include <string>
+#include <limits>
+#include <csignal>
+#include <iostream>
+#include <iomanip>
+#include <sstream>
+#include <cstdlib>
 
-void    HumanB::attack()
+
+class Weapon 
 {
-    std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
-}
+    private:
+        std::string type;
 
-void    HumanB::setWeapon(Weapon& weapon)
-{
-    this->weapon = &weapon;
-}
+    public:
+        Weapon(std::string str);
+        ~Weapon();
+        std::string    getType(void) const;
+        void    setType(std::string newtype);
+};
+
+
+
+#endif

@@ -6,11 +6,14 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 01:04:49 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/03/22 01:10:21 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/03/23 16:36:13 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
+
+Harl::Harl() {};
+Harl::~Harl() {};
 
 void    Harl::debug()
 {
@@ -30,4 +33,23 @@ void    Harl::info()
 void    Harl::error()
 {
     std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
+}
+
+void Harl::complain(std::string level)
+{
+    void (Harl::*functions[4])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+
+    std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+
+    int i = 0;
+    while(i < 4)
+    {
+        if(level == levels[i])
+        {
+            (this->*functions[i])();
+            return ;
+        }
+        i++;
+    }
+    std::cout << "WRONG LEVEL" << std::endl;
 }

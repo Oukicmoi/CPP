@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 19:36:33 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/03/21 19:56:58 by gtraiman         ###   ########.fr       */
+/*   Created: 2025/03/21 19:36:36 by gtraiman          #+#    #+#             */
+/*   Updated: 2025/03/23 16:45:16 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-void Zombie::setname( std::string name )
+int main()
 {
-    this->name = name;
+    try
+    {
+        Zombie *toto = newZombie("bg");  
+        toto->announce();
+        delete toto;
+        
+        randomChump("Local Zombie");
+        return 0; 
+    }
+    catch(...)
+    {
+        std::cerr << "Une exception s'est produite." << std::endl;
+    }
 }
-
-void Zombie::announce( void )
-{
-    std::cout << this->name << " : BraiiiiiiinnnzzzZ..." << std::endl;
-}
-
-
-
