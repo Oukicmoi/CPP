@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 21:01:03 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/03/24 20:30:02 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/03/26 18:23:25 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ Fixed::Fixed() : n(0)
     std::cout << "Default constructor called" << std::endl;
 };
 
-Fixed::Fixed(const Fixed& oldfix) : n(oldfix.n) 
+Fixed::Fixed(const Fixed& oldfix)
 {
     std::cout << "Copy constructor called" << std::endl;
+    *this = oldfix;
 };
 
 Fixed::Fixed(const int entier) : n(entier << f)
