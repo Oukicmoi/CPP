@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 20:44:08 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/03/29 20:50:59 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/03/31 15:56:21 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class DiamondTrap : public FragTrap, public ScavTrap
 {
     private:
         std::string name;
+        DiamondTrap();
 
     public:
         DiamondTrap(const std::string& name);

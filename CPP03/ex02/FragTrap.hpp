@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 20:26:06 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/03/29 20:29:40 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/03/31 15:59:46 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 class FragTrap : public ClapTrap
 {
+    private:
+        FragTrap();
     public:
         FragTrap(const std::string& name);
         virtual ~FragTrap();

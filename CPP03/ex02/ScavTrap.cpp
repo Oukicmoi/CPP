@@ -6,11 +6,13 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 19:55:57 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/03/29 20:17:42 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/03/31 16:00:35 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+
+ScavTrap::ScavTrap() {}
 
 ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name)
 {

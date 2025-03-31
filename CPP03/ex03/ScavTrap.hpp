@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 19:55:54 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/03/29 20:43:21 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/03/31 15:55:11 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 class ScavTrap : virtual public ClapTrap 
 {
+    protected:
+        ScavTrap(void);
     public:
         ScavTrap(const std::string& name);
         virtual ~ScavTrap();

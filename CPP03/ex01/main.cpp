@@ -6,14 +6,15 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 19:05:50 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/03/29 20:19:52 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/03/31 16:01:06 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "\n=== Constructing ===" << std::endl;
     ScavTrap scav1("Guardian");
     

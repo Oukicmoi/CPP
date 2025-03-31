@@ -6,12 +6,14 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 20:26:04 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/03/29 20:27:17 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/03/31 15:56:01 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 #include <iostream>
+
+FragTrap::FragTrap() {}
 
 FragTrap::FragTrap(const std::string& name) : ClapTrap(name)
 {

@@ -6,11 +6,11 @@
 #    By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/21 19:37:44 by gtraiman          #+#    #+#              #
-#    Updated: 2025/03/29 20:09:16 by gtraiman         ###   ########.fr        #
+#    Updated: 2025/03/31 16:05:13 by gtraiman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME        = ClapTrap
+NAME        = ScavTrap
 
 CXX         = c++
 
