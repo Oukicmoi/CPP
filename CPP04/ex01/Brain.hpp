@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 21:33:20 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/02 15:12:09 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:17:55 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class Brain
 {
-    protected:
+    private:
         std::string _ideas[100];
     public:
         Brain();

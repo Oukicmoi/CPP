@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 16:44:28 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/03/31 21:25:05 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:06:23 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 Cat::Cat()
 {
-    _type = "Cat";
+    Animal::_type = "Cat";
     std::cout << "Cat constructor called" << std::endl;
 }
 

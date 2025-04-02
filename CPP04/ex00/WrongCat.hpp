@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 19:48:12 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/03/31 20:13:06 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:13:52 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class WrongCat : public WrongAnimal
         ~WrongCat();
         WrongCat(const WrongCat& other);
         WrongCat& operator=(const WrongCat& other);
-        void makeSound() const;
 };
 
 #endif

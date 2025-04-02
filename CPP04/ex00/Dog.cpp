@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 16:44:59 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/03/31 21:25:09 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:06:52 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Dog::Dog()
 {
-    _type = "Dog";
+    Animal::_type = "Dog";
     std::cout << "Dog constructor called" << std::endl;
 }
 

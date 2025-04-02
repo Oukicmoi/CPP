@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 18:40:21 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/02 15:56:42 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:32:53 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,11 @@ int main()
         Dog dog1;
         dog1.getBrain().setIdea(0, "Original Dog Idea");
         dog1.getBrain().setIdea(1, "Second Idea");
+
     
         Dog dog2 = dog1;
         dog2.getBrain().setIdea(0, "Modified Dog Idea");
-    
+
         std::cout << "Dog1 idea 0: " << dog1.getBrain().getIdea(0) << std::endl;
         std::cout << "Dog1 idea 1: " << dog1.getBrain().getIdea(1) << std::endl;
         std::cout << "Dog2 idea 0: " << dog2.getBrain().getIdea(0) << std::endl;

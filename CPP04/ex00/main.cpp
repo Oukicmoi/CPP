@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 16:40:52 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/03/31 20:14:22 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:34:02 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "WrongCat.hpp"
+
 int main()
 {
     std::cout << "===== Basic Tests =====" << std::endl;
@@ -42,7 +43,6 @@ int main()
         std::cout << wrongCat->getType() << " " << std::endl;
         
         wrongCat->makeSound();
-        wrongMeta->makeSound();
         
         delete wrongMeta;
         delete wrongCat;

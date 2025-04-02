@@ -6,13 +6,12 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 19:48:16 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/03/31 21:25:30 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:38:11 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
 
-#include "WrongCat.hpp"
 
 WrongCat::WrongCat()
 {
@@ -38,9 +37,4 @@ WrongCat& WrongCat::operator=(const WrongCat& other)
     }
     std::cout << "WrongCat assignment operator called" << std::endl;
     return *this;
-}
-
-void WrongCat::makeSound() const
-{
-    std::cout << "Wrong cat sound!" << std::endl;
 }
