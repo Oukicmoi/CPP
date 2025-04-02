@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 16:44:48 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/01 20:27:23 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/02 15:51:00 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class Dog : public Animal
         virtual ~Dog();
         Dog(const Dog& other);
         Dog& operator=(const Dog& other);
-        Brain getbrain() const;
         virtual void makeSound() const;
+        Brain& getBrain() const;
 };
 
 #endif

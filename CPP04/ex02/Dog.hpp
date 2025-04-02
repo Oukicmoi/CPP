@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 16:44:48 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/01 18:22:10 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/02 15:51:00 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class Dog : public Animal
         Dog(const Dog& other);
         Dog& operator=(const Dog& other);
         virtual void makeSound() const;
+        Brain& getBrain() const;
 };
 
 #endif

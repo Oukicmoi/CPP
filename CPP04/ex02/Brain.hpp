@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 21:33:20 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/03/31 21:41:02 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/02 15:12:09 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ class Brain
         ~Brain();
         Brain(const Brain& other);
         Brain& operator=(const Brain& other);
+        void setIdea(int index, const std::string& idea);
+        std::string getIdea(int index) const;
 };
 
 #endif
