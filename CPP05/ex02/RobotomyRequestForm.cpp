@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:46:43 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/08 14:29:34 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:39:16 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("Rob
 {
     std::srand(std::time(0));
 }
+RobotomyRequestForm::RobotomyRequestForm() {}
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 

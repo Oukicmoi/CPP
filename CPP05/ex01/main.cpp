@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:28:24 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/08 13:29:34 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:11:30 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ int main()
         Bureaucrat b3("Low Level", 150);
 
 
-        b1.signForm(f1);
-        b2.signForm(f1);
         b3.signForm(f1);
+        b2.signForm(f1);
+        b1.signForm(f1);
 
-        b1.signForm(f2);
         b2.signForm(f2);
+        b1.signForm(f2);
         b3.signForm(f2);
 
         b1.signForm(f3);
@@ -47,18 +47,24 @@ int main()
         try
         {
             Form f4("Invalid High", 0, 50);
-        } catch (std::exception& e) {
+        }
+        catch (std::exception& e)
+        {
             std::cerr << "Error creating form: " << e.what() << std::endl;
         }
 
         try
         {
             Form f5("Invalid Low", 50, 151);
-        } catch (std::exception& e) {
+        }
+        catch (std::exception& e)
+        {
             std::cerr << "Error creating form: " << e.what() << std::endl;
         }
 
-    } catch (std::exception& e) {
+    }
+    catch (std::exception& e)
+    {
         std::cerr << "Unexpected error: " << e.what() << std::endl;
     }
 

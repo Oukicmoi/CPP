@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:45:21 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/08 14:25:35 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:53:48 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
 {
-    if (this != &other) {
+    if (this != &other)
+    {
         AForm::operator=(other);
     }
     return *this;
 }
+
+ShrubberyCreationForm::ShrubberyCreationForm() {}
 
 void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 {

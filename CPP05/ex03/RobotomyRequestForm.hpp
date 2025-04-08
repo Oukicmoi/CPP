@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:46:36 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/08 14:14:48 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:38:38 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 class RobotomyRequestForm : public AForm
 {
+    private:
+        RobotomyRequestForm();
     public:
         RobotomyRequestForm(const std::string& target);
         virtual ~RobotomyRequestForm();

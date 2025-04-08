@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 11:24:04 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/08 14:24:17 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:15:38 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,11 @@ void Bureaucrat::decrementGrade()
     _grade++;
 }
 
+const char* Bureaucrat::FormAlreadySigned::what() const throw()
+{
+    return "The Form is already signed !";
+}
+
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
     return "Grade is too high (maximum is 1)";
@@ -80,6 +85,8 @@ void Bureaucrat::signForm(AForm& form)
 {
     try
     {
+        if(form.isSigned() == true)
+            throw FormAlreadySigned();
         form.beSigned(*this);
         std::cout << _name << " signed " << form.getName() << std::endl;
     }

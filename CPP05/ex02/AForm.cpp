@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Aform.cpp                                          :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:44:25 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/08 14:09:38 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:23:10 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,15 @@ AForm::AForm(const std::string& name, int gradeToSign, int gradeToExecute, const
         throw GradeTooLowException();
 }
 
-AForm::AForm(const AForm& other) 
-    : _name(other._name), _isSigned(other._isSigned), 
-      _gradeToSign(other._gradeToSign), _gradeToExecute(other._gradeToExecute),
-      _target(other._target) {}
+AForm::AForm(const AForm& other) : _name(other._name), _isSigned(other._isSigned), _gradeToSign(other._gradeToSign),
+    _gradeToExecute(other._gradeToExecute), _target(other._target) {}
 
 AForm::~AForm() {}
 
 AForm& AForm::operator=(const AForm& other)
 {
-    if (this != &other) {
+    if (this != &other)
+    {
         _isSigned = other._isSigned;
     }
     return *this;

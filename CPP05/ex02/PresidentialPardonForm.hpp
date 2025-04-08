@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:08:07 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/08 14:25:17 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:34:03 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 class PresidentialPardonForm : public AForm
 {
+    private:
+        PresidentialPardonForm();
     public:
         PresidentialPardonForm(const std::string& target);
         virtual ~PresidentialPardonForm();

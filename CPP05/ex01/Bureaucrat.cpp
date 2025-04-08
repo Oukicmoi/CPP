@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 11:24:04 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/08 13:28:02 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:10:09 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,11 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
     return "Grade is too low (minimum is 150)";
 }
 
+const char* Bureaucrat::FormAlreadySigned::what() const throw()
+{
+    return "The Form is already signed !";
+}
+
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat)
 {
     os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
@@ -80,6 +85,8 @@ void Bureaucrat::signForm(Form& form)
 {
     try
     {
+        if(form.isSigned() == true)
+            throw FormAlreadySigned();
         form.beSigned(*this);
         std::cout << _name << " signed " << form.getName() << std::endl;
     }

@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:10:57 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/08 14:42:33 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:18:21 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int main()
     
         std::cout << "--- Shrubbery Creation Form ---\n";
         low.signForm(shrub); 
-        mid.signForm(shrub); 
+        mid.signForm(shrub);
         low.executeForm(shrub);
         high.executeForm(shrub);
 

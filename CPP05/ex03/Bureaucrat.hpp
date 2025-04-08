@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 11:24:39 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/08 14:16:53 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:14:59 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ class Bureaucrat
                 virtual const char* what() const throw();
         };
         class GradeTooLowException : public std::exception
+        {
+            public:
+                virtual const char* what() const throw();
+        };
+        class FormAlreadySigned : public std::exception
         {
             public:
                 virtual const char* what() const throw();

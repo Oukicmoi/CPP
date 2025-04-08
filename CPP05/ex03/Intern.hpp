@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:47:07 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/08 14:47:19 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:41:03 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,12 @@ class Intern
 {
     private:
         typedef AForm* (Intern::*FormCreator)(const std::string&);
-        
         struct FormType
         {
             std::string name;
             FormCreator creator;
         };
-        
         static const FormType formTypes[3];
-        
         AForm* createShrubbery(const std::string& target);
         AForm* createRobotomy(const std::string& target);
         AForm* createPresidential(const std::string& target);

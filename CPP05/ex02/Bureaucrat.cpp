@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 11:24:04 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/08 14:24:17 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:15:31 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ void Bureaucrat::signForm(AForm& form)
 {
     try
     {
+        if(form.isSigned() == true)
+            throw FormAlreadySigned();
         form.beSigned(*this);
         std::cout << _name << " signed " << form.getName() << std::endl;
     }
@@ -88,6 +90,12 @@ void Bureaucrat::signForm(AForm& form)
         std::cout << _name << " couldn't sign " << form.getName() 
                   << " because " << e.what() << std::endl;
     }
+}
+
+
+const char* Bureaucrat::FormAlreadySigned::what() const throw()
+{
+    return "The Form is already signed !";
 }
 
 void Bureaucrat::executeForm(const AForm& form) const
