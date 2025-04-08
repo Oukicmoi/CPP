@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:28:24 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/08 17:11:30 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:32:26 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,24 @@ int main()
         Bureaucrat b2("Mid Level", 50);
         Bureaucrat b3("Low Level", 150);
 
+        std::cout << std::endl;
 
         b3.signForm(f1);
         b2.signForm(f1);
         b1.signForm(f1);
+        std::cout << f1 << std::endl << std::endl;
+
 
         b2.signForm(f2);
         b1.signForm(f2);
         b3.signForm(f2);
+        std::cout << f2 << std::endl << std::endl;
 
+
+        b3.signForm(f3);
         b1.signForm(f3);
         b2.signForm(f3);
-        b3.signForm(f3);
+        std::cout << f3 << std::endl << std::endl;
 
         try
         {
