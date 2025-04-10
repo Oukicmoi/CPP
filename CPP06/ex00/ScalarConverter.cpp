@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:11:32 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/09 17:04:21 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/10 19:30:34 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 #include <iostream>
 #include <sstream>
 #include <limits>
+
+ScalarConverter::~ScalarConverter() {}
+
 
 ScalarConverter::Type ScalarConverter::detectType(const std::string& literal)
 {
@@ -55,29 +58,14 @@ bool ScalarConverter::isSpecialCase(const std::string& literal)
             literal == "inf" || literal == "inff");
 }
 
-void ScalarConverter::handleSpecialCase(const std::string& literal)
+void ScalarConverter::handleSpecialCase(const std::string& literal, double &d)
 {
     if (literal == "nan" || literal == "nanf")
-    {
-        std::cout << "char: impossible\n";
-        std::cout << "int: impossible\n";
-        std::cout << "float: nanf\n";
-        std::cout << "double: nan\n";
-    }
+        d = NAN;
     else if (literal == "+inf" || literal == "+inff" || literal == "inf" || literal == "inff")
-    {
-        std::cout << "char: impossible\n";
-        std::cout << "int: impossible\n";
-        std::cout << "float: +inff\n";
-        std::cout << "double: +inf\n";
-    }
+        d = INFINITY;
     else if (literal == "-inf" || literal == "-inff")
-    {
-        std::cout << "char: impossible\n";
-        std::cout << "int: impossible\n";
-        std::cout << "float: -inff\n";
-        std::cout << "double: -inf\n";
-    }
+        d = -INFINITY;
 }
 
 void ScalarConverter::printChar(double d)
@@ -92,23 +80,19 @@ void ScalarConverter::printChar(double d)
     }
     else
     {
-        std::cout << "char: '" << static_cast<char>(d) << "'\n";
+        std::cout << "char: \'" << static_cast<char>(d) << "\'\n";
     }
 }
 
-void ScalarConverter::printInt(double d)
+void ScalarConverter::printInt(int d)
 {
-    if (d < INT_MIN || d > INT_MAX || std::isnan(d))
-    {
+    if (std::isnan(d))
         std::cout << "int: impossible\n";
-    }
     else
-    {
         std::cout << "int: " << static_cast<int>(d) << "\n";
-    }
 }
 
-void ScalarConverter::printFloat(double d)
+void ScalarConverter::printFloat(float d)
 {
     float f = static_cast<float>(d);
     if (f == static_cast<int>(f))
@@ -123,7 +107,7 @@ void ScalarConverter::printFloat(double d)
 
 void ScalarConverter::printDouble(double d)
 {
-    if (d == static_cast<int>(d))
+    if (d == floor(d) && d != INFINITY && d != -INFINITY)
     {
         std::cout << "double: " << d << ".0\n";
     }
@@ -141,64 +125,93 @@ void ScalarConverter::convertFromChar(char c)
     std::cout << "double: " << static_cast<double>(c) << ".0\n";
 }
 
-void ScalarConverter::convertFromInt(int i)
+void ScalarConverter::convertFromInt(double i, bool n)
 {
-    printChar(i);
-    printInt(i);
-    printFloat(i);
-    printDouble(i);
+    if (n == 0)
+    {
+        i = static_cast<int>(i);
+        printChar(i);
+        printInt(i);
+    }
+    else
+        std::cout << "char: impossible\n" <<" int: impossible" <<std::endl;
+    printFloat(static_cast<float>(i));
+    printDouble(static_cast<double>(i));
 }
 
-void ScalarConverter::convertFromFloat(float f)
+void ScalarConverter::convertFromFloat(double f, bool n)
 {
-    printChar(f);
-    printInt(f);
-    printFloat(f);
-    printDouble(f);
+    if (n == 0)
+    {
+        f = static_cast<float>(f);
+        printChar(f);
+        printInt(f);
+    }
+    else
+        std::cout << "char: impossible\n" <<" int: impossible" <<std::endl;
+    printFloat(static_cast<float>(f));
+    printDouble(static_cast<double>(f));
 }
 
-void ScalarConverter::convertFromDouble(double d)
+void ScalarConverter::convertFromDouble(double d, bool n)
 {
-    printChar(d);
-    printInt(d);
-    printFloat(d);
-    printDouble(d);
+    if (n == 0)
+    {
+        d = static_cast<float>(d);
+        printChar(d);
+        printInt(d);
+    }
+    else
+        std::cout << "char: impossible\n" <<" int: impossible" <<std::endl;
+    printFloat(static_cast<float>(d));
+    printDouble(static_cast<double>(d));
 }
 
 void ScalarConverter::convert(const std::string& literal)
 {
-    if (isSpecialCase(literal))
+    bool n = 0;
+    double d = 0.0;
+    Type type = INVALID;
+    if (!isSpecialCase(literal))
     {
-        handleSpecialCase(literal);
-        return;
+        type = detectType(literal);
+        char* end;
+        d = strtod(literal.c_str(), &end);
+    
+        if(type == CHAR)
+            return(convertFromChar(literal[0]));
+    
+        if (type == INVALID || (d == 0.0 && (literal[0] != '0' && literal[0] != '+' && literal[0] != '-' && literal[0] != '.')))
+        {
+            std::cerr << "Invalid input\n";
+            return;
+        }
     }
-
-    Type type = detectType(literal);
-    char* end;
-    double d = strtod(literal.c_str(), &end);
-
-    if(type == CHAR)
-        return(convertFromChar(literal[0]));
-
-    if (type == INVALID || (d == 0.0 && (literal[0] != '0' && literal[0] != '+' && literal[0] != '-' && literal[0] != '.')))
+    else
     {
-        std::cerr << "Invalid input\n";
-        return;
+        handleSpecialCase(literal, d);
+        type = SPECIAL;
     }
-
     switch (type)
     {
         case CHAR:
             convertFromChar(literal[0]);
             break;
         case INT:
-            convertFromInt(static_cast<int>(d));
+            if(d < INT_MIN || d > INT_MAX)
+                n = 1;
+            convertFromInt(d, n);
             break;
         case FLOAT:
-            convertFromFloat(static_cast<float>(d));
+            if(d < INT_MIN || d > INT_MAX)
+                n = 1;
+            convertFromFloat(d, n);
             break;
+        case SPECIAL:
         case DOUBLE:
-            convertFromDouble(d);
+            if(d < INT_MIN || d > INT_MAX)
+                n = 1;
+            convertFromDouble(d, n);
             break;
         default:
             std::cerr << "Invalid type\n";
