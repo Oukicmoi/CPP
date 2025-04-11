@@ -6,15 +6,17 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:11:18 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/09 17:12:49 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/11 13:32:31 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 #include <iostream>
 
-int main(int argc, char **argv) {
-    if (argc != 2) {
+int main(int argc, char **argv)
+{
+    if (argc != 2)
+    {
         std::cerr << "Usage: " << argv[0] << " <literal>\n";
         return 1;
     }
@@ -24,7 +26,6 @@ int main(int argc, char **argv) {
     ScalarConverter::convert(argv[1]);
     std::cout << "\n";
 
-    // Tests supplémentaires (décommenter ceux que vous voulez tester)
     /*
     std::cout << "=== Additional tests ===\n";
     
