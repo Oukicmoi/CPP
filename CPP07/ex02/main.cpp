@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 18:24:44 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/11 18:25:17 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/11 18:53:10 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,12 @@ int main()
 
     // Nettoyage
     delete [] mirror;
+
+
+    Array<std::string>   strArray(1);
+    std::string s = "hello";
+    strArray[0] = s;
+    std::cout << strArray[0] << std::endl;
 
     std::cout << "\n=== TOUS LES TESTS TERMINES ===\n";
     return 0;
