@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:11:51 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/10 19:29:31 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/10 19:50:43 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@
 
 class ScalarConverter
 {
-
-    public:
-        static void convert(const std::string& literal);
-
     private:
         enum Type { CHAR, INT, FLOAT, DOUBLE, INVALID , SPECIAL};
 
@@ -43,6 +39,8 @@ class ScalarConverter
         static void printFloat(float d);
         static void printDouble(double d);
 
-    };
+    public:
+        static void convert(const std::string& literal);
+};
 
 #endif

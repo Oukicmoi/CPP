@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:11:32 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/10 19:30:34 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/11 13:20:25 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ ScalarConverter::~ScalarConverter() {}
 
 ScalarConverter::Type ScalarConverter::detectType(const std::string& literal)
 {
+    if(literal == "-nan")
+        return(INVALID);
     if (literal.length() == 1 && !isdigit(literal[0]))
     {
         return CHAR;
@@ -208,6 +210,7 @@ void ScalarConverter::convert(const std::string& literal)
             convertFromFloat(d, n);
             break;
         case SPECIAL:
+            n = 1;
         case DOUBLE:
             if(d < INT_MIN || d > INT_MAX)
                 n = 1;
