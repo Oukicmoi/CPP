@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 19:56:00 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/12 20:08:53 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/15 17:15:41 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,51 @@ int main()
     {
         Span emptySpan(10);
         emptySpan.shortestSpan();
+    } catch (std::exception& e)
+    {
+        std::cerr << "Expected error: " << e.what() << std::endl;
+    }
+
+    try
+    {
+        Span emptySpan(0);
+        emptySpan.shortestSpan();
+    } catch (std::exception& e)
+    {
+        std::cerr << "Expected error: " << e.what() << std::endl;
+    }
+
+    try
+    {
+        Span test(10);
+        std::vector<int> vect;
+        srand(time(0));
+        for (int i = 0; i < 10000; ++i)
+        {
+            vect.push_back(rand() % 100000);
+        }
+        test.addRange(vect.begin(), vect.end());
+
+    } catch (std::exception& e)
+    {
+        std::cerr << "Expected error: " << e.what() << std::endl;
+    }
+
+    try
+    {
+        Span test(100);
+        std::vector<int> vect1;
+        std::vector<int> vect2;
+        srand(time(0));
+        for (int i = 0; i < 51; ++i)
+        {
+            vect1.push_back(rand() % 51);
+            vect2.push_back(rand() % 51);
+        }
+        test.addRange(vect1.begin(), vect1.end());
+        
+        test.addRange(vect2.begin(), vect2.end());
+
     } catch (std::exception& e)
     {
         std::cerr << "Expected error: " << e.what() << std::endl;
