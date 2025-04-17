@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 19:03:17 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/17 19:11:45 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/17 22:27:58 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ bool PmergeMe::validateInput(int argc, char** argv)
 {
     for (int i = 1; i < argc; ++i)
     {
-        const std::string arg = argv[i];
+        std::string arg = argv[i];
+        if (arg[0] == '+')
+            arg = arg.substr(1);    
         if (arg.empty() || arg.find_first_not_of("0123456789") != std::string::npos)
             return false;
         std::istringstream iss(arg);
@@ -63,9 +65,16 @@ void PmergeMe::vecMerge(size_t left, size_t mid, size_t right)
     std::vector<int> tmp(right - left + 1);
     size_t i = left, j = mid + 1, k = 0;
     while (i <= mid && j <= right)
-        tmp[k++] = (_vec[i] <= _vec[j]) ? _vec[i++] : _vec[j++];
-    while (i <= mid)   tmp[k++] = _vec[i++];
-    while (j <= right) tmp[k++] = _vec[j++];
+    {
+        if (_vec[i] <= _vec[j])
+            tmp[k++] = _vec[i++];
+        else
+            tmp[k++] = _vec[j++];
+    }
+    while (i <= mid)
+        tmp[k++] = _vec[i++];
+    while (j <= right)
+        tmp[k++] = _vec[j++];
     for (size_t m = 0; m < k; ++m)
         _vec[left + m] = tmp[m];
 }
@@ -105,11 +114,15 @@ void PmergeMe::deqInsertionSort(size_t left, size_t right)
 void PmergeMe::deqMerge(size_t left, size_t mid, size_t right)
 {
     std::deque<int> tmp;
-    size_t i = left, j = mid + 1;
+    size_t i = left;
+    size_t j = mid + 1;
+
     while (i <= mid && j <= right)
         tmp.push_back((_deq[i] <= _deq[j]) ? _deq[i++] : _deq[j++]);
-    while (i <= mid)   tmp.push_back(_deq[i++]);
-    while (j <= right) tmp.push_back(_deq[j++]);
+    while (i <= mid)
+        tmp.push_back(_deq[i++]);
+    while (j <= right)
+        tmp.push_back(_deq[j++]);
     for (size_t m = 0; m < tmp.size(); ++m)
         _deq[left + m] = tmp[m];
 }
@@ -130,6 +143,20 @@ void PmergeMe::deqMergeInsertSort(size_t left, size_t right)
         deqMerge(left, mid, right);
     }
 }
+
+std::vector<std::string> splitIfNeeded(int argc, char** argv)
+{
+    std::vector<std::string> tokens;
+    for (int i = 1; i < argc; ++i)
+    {
+        std::istringstream iss(argv[i]);
+        std::string word;
+        while (iss >> word)
+            tokens.push_back(word);
+    }
+    return tokens;
+}
+
 
 void PmergeMe::sort(int argc, char** argv)
 {
@@ -155,7 +182,7 @@ void PmergeMe::sort(int argc, char** argv)
 
 void PmergeMe::displayResults() const
 {
-    std::cout << "After:";
+    std::cout << "After: ";
     for (size_t i = 0; i < _vec.size(); ++i)
         std::cout << ' ' << _vec[i];
     std::cout << std::endl;
