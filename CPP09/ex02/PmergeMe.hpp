@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 23:29:21 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/16 23:32:16 by gtraiman         ###   ########.fr       */
+/*   Created: 2025/04/17 19:02:55 by gtraiman          #+#    #+#             */
+/*   Updated: 2025/04/17 19:03:07 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,45 +16,41 @@
 #include <vector>
 #include <deque>
 #include <string>
-#include <utility>
 #include <ctime>
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
 #include <iomanip>
-#include "limits.h"
+#include <climits>
 
 class PmergeMe
 {
-    private:
-        std::vector<int> _vec;
-        std::deque<int> _deq;
-        double _vecTime;
-        double _deqTime;
-        
-        // Private methods
-        bool validateInput(int argc, char** argv);
-        void parseInput(int argc, char** argv);
-        
-        // Vector sorting
-        void vecMergeInsertSort();
-        void vecInsertionSort(size_t left, size_t right);
-        void vecMerge(size_t left, size_t mid, size_t right);
-        
-        // Deque sorting
-        void deqMergeInsertSort();
-        void deqInsertionSort(size_t left, size_t right);
-        void deqMerge(size_t left, size_t mid, size_t right);
-        
-        PmergeMe(const PmergeMe&);
-        PmergeMe& operator=(const PmergeMe&);
+private:
+    std::vector<int> _vec;
+    std::deque<int>  _deq;
+    double _vecTime;
+    double _deqTime;
 
-    public:
-        PmergeMe();
-        ~PmergeMe();
-        
-        void sort(int argc, char** argv);
-        void displayResults() const;
+    bool validateInput(int argc, char** argv);
+    void parseInput(int argc, char** argv);
+
+    void vecMergeInsertSort(size_t left, size_t right);
+    void vecInsertionSort   (size_t left, size_t right);
+    void vecMerge           (size_t left, size_t mid, size_t right);
+
+    void deqMergeInsertSort(size_t left, size_t right);
+    void deqInsertionSort   (size_t left, size_t right);
+    void deqMerge           (size_t left, size_t mid, size_t right);
+
+    PmergeMe(const PmergeMe&);
+    PmergeMe& operator=(const PmergeMe&);
+
+public:
+    PmergeMe();
+    ~PmergeMe();
+
+    void sort(int argc, char** argv);
+    void displayResults() const;
 };
 
 #endif

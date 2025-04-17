@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 20:20:10 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/16 23:25:30 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:36:43 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ bool RPN::isOperator(const std::string& token) const
 bool RPN::isValidNumber(const std::string& token, int& num) const
 {
     char* end;
-    long val = std::strtol(token.c_str(), &end, 10);
+    double val = std::strtod(token.c_str(), &end);
     if (*end != '\0' || val < 0 || val >= 10)
         return false;
     num = static_cast<int>(val);
@@ -87,7 +87,7 @@ void RPN::evaluate(const std::string& expression)
 {
     std::istringstream iss(expression);
     std::string token;
-    
+
     while (iss >> token)
     {
         try
@@ -107,7 +107,6 @@ void RPN::evaluate(const std::string& expression)
             return;
         }
     }
-    
     try
     {
         validateResult();
