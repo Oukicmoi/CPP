@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 21:52:09 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/16 17:20:28 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/18 13:49:04 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void BitcoinExchange::processInput(const std::string& filename) const
         size_t pipe = line.find('|');
         if (pipe == std::string::npos)
         {
-            std::cerr << "Error: bad input => " << line << std::endl;
+            std::cerr << "here Error: bad input => " << line << std::endl;
             continue;
         }
         
@@ -75,6 +75,7 @@ void BitcoinExchange::processInput(const std::string& filename) const
         
         if (!isValidDate(date))
         {
+            
             std::cerr << "Error: bad input => " << date << std::endl;
             continue;
         }
@@ -86,8 +87,16 @@ void BitcoinExchange::processInput(const std::string& filename) const
             std::cerr << "Error: not a positive number or too large." << std::endl;
             continue;
         }
-        
-        float rate = findExchangeRate(date);
+        float rate;
+        try
+        {
+            rate = findExchangeRate(date);
+        }
+        catch (const std::exception& e)
+        {
+            std::cerr << e.what() << std::endl;
+            continue;
+        }
         std::cout << date << " => " << value << " = " << (value * rate) << std::endl;
     }
 }
@@ -128,12 +137,6 @@ bool BitcoinExchange::isValidDate(const std::string& date) const
         if (day > (isLeapYear ? 29 : 28))
 		return false;
     }
-
-    // // Validation supplémentaire avec tm (optionnel)
-    // struct tm tm = {0};
-    // if (strptime(date.c_str(), "%Y-%m-%d", &tm) == NULL)
-    //     return false;
-
     return true;
 }
 

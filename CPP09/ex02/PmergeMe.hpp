@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 19:02:55 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/17 19:03:07 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/18 14:56:55 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include <stdexcept>
 #include <iomanip>
 #include <climits>
+#include <algorithm>
 
 class PmergeMe
 {

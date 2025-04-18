@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 19:03:17 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/17 22:27:58 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/18 15:00:14 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ bool PmergeMe::validateInput(int argc, char** argv)
     {
         std::string arg = argv[i];
         if (arg[0] == '+')
-            arg = arg.substr(1);    
-        if (arg.empty() || arg.find_first_not_of("0123456789") != std::string::npos)
+            arg = arg.substr(1);
+        if (arg.empty() || arg.find_first_not_of("0123456789") != std::string::npos || argv[i][0] == '\0')
             return false;
         std::istringstream iss(arg);
         double num;
@@ -45,118 +45,100 @@ void PmergeMe::parseInput(int argc, char** argv)
     }
 }
 
-void PmergeMe::vecInsertionSort(size_t left, size_t right)
+std::vector<size_t> generateJacobsthalSequence(size_t n)
 {
-    for (size_t i = left + 1; i <= right; ++i)
+    std::vector<size_t> seq;
+    size_t j1 = 1, j2 = 1;
+    while (j2 < n)
     {
-        int key = _vec[i];
-        size_t j = i;
-        while (j > left && _vec[j - 1] > key)
-        {
-            _vec[j] = _vec[j - 1];
-            --j;
-        }
-        _vec[j] = key;
+        seq.push_back(j2);
+        size_t temp = j2;
+        j2 = j2 * 2 + 1;
+        j1 = temp;
     }
+    for (size_t i = 1; i < n; ++i)
+    {
+        if (std::find(seq.begin(), seq.end(), i) == seq.end())
+            seq.push_back(i);
+    }
+    return seq;
 }
 
-void PmergeMe::vecMerge(size_t left, size_t mid, size_t right)
+void insertInOrder(std::vector<int>& sorted, int value)
 {
-    std::vector<int> tmp(right - left + 1);
-    size_t i = left, j = mid + 1, k = 0;
-    while (i <= mid && j <= right)
+    std::vector<int>::iterator it = std::lower_bound(sorted.begin(), sorted.end(), value);
+    sorted.insert(it, value);
+}
+
+void insertInOrder(std::deque<int>& sorted, int value)
+{
+    std::deque<int>::iterator it = std::lower_bound(sorted.begin(), sorted.end(), value);
+    sorted.insert(it, value);
+}
+
+std::vector<int> fordJohnsonSortVec(const std::vector<int>& input)
+{
+    if (input.size() <= 1)
+        return input;
+
+    std::vector<int> mins, maxs;
+    for (size_t i = 0; i + 1 < input.size(); i += 2)
     {
-        if (_vec[i] <= _vec[j])
-            tmp[k++] = _vec[i++];
+        if (input[i] < input[i+1])
+        {
+            mins.push_back(input[i]);
+            maxs.push_back(input[i+1]);
+        }
         else
-            tmp[k++] = _vec[j++];
-    }
-    while (i <= mid)
-        tmp[k++] = _vec[i++];
-    while (j <= right)
-        tmp[k++] = _vec[j++];
-    for (size_t m = 0; m < k; ++m)
-        _vec[left + m] = tmp[m];
-}
-
-void PmergeMe::vecMergeInsertSort(size_t left, size_t right)
-{
-    const size_t threshold = 16;
-    if (right < left || right - left + 1 <= threshold)
-    {
-        if (left < right)
-            vecInsertionSort(left, right);
-    }
-    else
-    {
-        size_t mid = left + (right - left) / 2;
-        vecMergeInsertSort(left, mid);
-        vecMergeInsertSort(mid + 1, right);
-        vecMerge(left, mid, right);
-    }
-}
-
-void PmergeMe::deqInsertionSort(size_t left, size_t right)
-{
-    for (size_t i = left + 1; i <= right; ++i)
-    {
-        int key = _deq[i];
-        size_t j = i;
-        while (j > left && _deq[j - 1] > key)
         {
-            _deq[j] = _deq[j - 1];
-            --j;
+            mins.push_back(input[i+1]);
+            maxs.push_back(input[i]);
         }
-        _deq[j] = key;
     }
-}
+    if (input.size() % 2 != 0)
+        mins.push_back(input.back());
 
-void PmergeMe::deqMerge(size_t left, size_t mid, size_t right)
-{
-    std::deque<int> tmp;
-    size_t i = left;
-    size_t j = mid + 1;
-
-    while (i <= mid && j <= right)
-        tmp.push_back((_deq[i] <= _deq[j]) ? _deq[i++] : _deq[j++]);
-    while (i <= mid)
-        tmp.push_back(_deq[i++]);
-    while (j <= right)
-        tmp.push_back(_deq[j++]);
-    for (size_t m = 0; m < tmp.size(); ++m)
-        _deq[left + m] = tmp[m];
-}
-
-void PmergeMe::deqMergeInsertSort(size_t left, size_t right)
-{
-    const size_t threshold = 16;
-    if (right < left || right - left + 1 <= threshold)
+    std::vector<int> sorted = fordJohnsonSortVec(maxs);
+    std::vector<size_t> order = generateJacobsthalSequence(mins.size());
+    for (size_t i = 0; i < order.size(); ++i)
     {
-        if (left < right)
-            deqInsertionSort(left, right);
+        if (order[i] < mins.size())
+            insertInOrder(sorted, mins[order[i]]);
     }
-    else
-    {
-        size_t mid = left + (right - left) / 2;
-        deqMergeInsertSort(left, mid);
-        deqMergeInsertSort(mid + 1, right);
-        deqMerge(left, mid, right);
-    }
+    return sorted;
 }
 
-std::vector<std::string> splitIfNeeded(int argc, char** argv)
+std::deque<int> fordJohnsonSortDeq(const std::deque<int>& input)
 {
-    std::vector<std::string> tokens;
-    for (int i = 1; i < argc; ++i)
-    {
-        std::istringstream iss(argv[i]);
-        std::string word;
-        while (iss >> word)
-            tokens.push_back(word);
-    }
-    return tokens;
-}
+    if (input.size() <= 1)
+        return input;
 
+    std::deque<int> mins, maxs;
+    for (size_t i = 0; i + 1 < input.size(); i += 2)
+    {
+        if (input[i] < input[i+1])
+        {
+            mins.push_back(input[i]);
+            maxs.push_back(input[i+1]);
+        }
+        else
+        {
+            mins.push_back(input[i+1]);
+            maxs.push_back(input[i]);
+        }
+    }
+    if (input.size() % 2 != 0)
+        mins.push_back(input.back());
+
+    std::deque<int> sorted = fordJohnsonSortDeq(maxs);
+    std::vector<size_t> order = generateJacobsthalSequence(mins.size());
+    for (size_t i = 0; i < order.size(); ++i)
+    {
+        if (order[i] < mins.size())
+            insertInOrder(sorted, mins[order[i]]);
+    }
+    return sorted;
+}
 
 void PmergeMe::sort(int argc, char** argv)
 {
@@ -170,12 +152,12 @@ void PmergeMe::sort(int argc, char** argv)
     std::cout << std::endl;
 
     clock_t start = clock();
-    vecMergeInsertSort(0, _vec.size() - 1);
+    _vec = fordJohnsonSortVec(_vec);
     clock_t end   = clock();
     _vecTime = double(end - start) / CLOCKS_PER_SEC * 1e6;
 
     start = clock();
-    deqMergeInsertSort(0, _deq.size() - 1);
+    _deq = fordJohnsonSortDeq(_deq);
     end   = clock();
     _deqTime = double(end - start) / CLOCKS_PER_SEC * 1e6;
 }

@@ -6,13 +6,13 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 23:31:47 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/17 22:28:19 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/18 14:39:12 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include <iostream>
-
+    #include <stdio.h>
 std::vector<char*> splitIfNeeded(int argc, char** argv)
 {
     std::vector<std::string> tokens;
@@ -35,6 +35,7 @@ std::vector<char*> splitIfNeeded(int argc, char** argv)
 
 int main(int argc, char** argv)
 {
+
     if (argc < 2)
     {
         std::cerr << "Usage: " << argv[0] << " <positive integers>" << std::endl;
@@ -44,6 +45,11 @@ int main(int argc, char** argv)
     {
         std::vector<char*> args2 = splitIfNeeded(argc, argv);
 
+        if (args2.size() < 2)
+        {
+            std::cerr << "Usage: " << argv[0] << " <positive integers>" << std::endl;
+            return 1;
+        }
         PmergeMe sorter;
         sorter.sort(args2.size(), args2.data());
         sorter.displayResults();
