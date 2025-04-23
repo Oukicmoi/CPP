@@ -6,7 +6,7 @@
 #    By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/21 19:37:44 by gtraiman          #+#    #+#              #
-#    Updated: 2025/04/16 16:56:55 by gtraiman         ###   ########.fr        #
+#    Updated: 2025/04/23 17:31:23 by gtraiman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME        = btc
 
 CXX         = c++
 
-CXXFLAGS    = -std=c++98 -Wall -Wextra -Werror -g3
+CXXFLAGS    = -std=c++98 -Wall -Wextra -Werror
 
 SRCS        = 	BitcoinExchange.cpp \
 		main.cpp \

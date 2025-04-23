@@ -6,7 +6,7 @@
 /*   By: gtraiman <gtraiman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 21:52:09 by gtraiman          #+#    #+#             */
-/*   Updated: 2025/04/18 13:49:04 by gtraiman         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:34:27 by gtraiman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void BitcoinExchange::processInput(const std::string& filename) const
         size_t pipe = line.find('|');
         if (pipe == std::string::npos)
         {
-            std::cerr << "here Error: bad input => " << line << std::endl;
+            std::cerr << "Error: bad input => " << line << std::endl;
             continue;
         }
         
